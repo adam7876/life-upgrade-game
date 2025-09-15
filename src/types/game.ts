@@ -81,6 +81,7 @@ export interface Enemy {
 export interface Distraction {
   id: string;
   name: string;
+  description: string;
   riskLevel: 'low' | 'medium' | 'high';
   alternativeAction: string;
   isActive: boolean;
