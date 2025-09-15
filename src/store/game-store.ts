@@ -46,28 +46,39 @@ export const useGameStore = create<GameState>()(
       questGenerator: new QuestGenerator(),
 
       initializePlayer: (name: string, epicWin: string) => {
-        const player: Player = {
-          id: `player-${Date.now()}`,
-          name,
-          level: 1,
-          experience: 0,
-          currentEpicWin: epicWin,
-          mood: 3,
-          location: '未知',
-          weather: '☀️',
-          createdAt: new Date(),
-          updatedAt: new Date()
-        };
+        try {
+          const player: Player = {
+            id: `player-${Date.now()}`,
+            name,
+            level: 1,
+            experience: 0,
+            currentEpicWin: epicWin,
+            mood: 3,
+            location: '未知',
+            weather: '☀️',
+            createdAt: new Date(),
+            updatedAt: new Date()
+          };
 
-        set({
-          player,
-          isGameStarted: true,
-          currentLevel: 1,
-          totalExperience: 0
-        });
+          set({
+            player,
+            isGameStarted: true,
+            currentLevel: 1,
+            totalExperience: 0
+          });
 
-        // 自動生成第一天的日卡
-        get().generateDailyCard();
+          // 延遲生成日卡，確保狀態已更新
+          setTimeout(() => {
+            try {
+              get().generateDailyCard();
+            } catch (error) {
+              console.error('生成日卡失敗:', error);
+            }
+          }, 100);
+        } catch (error) {
+          console.error('初始化玩家失敗:', error);
+          throw error;
+        }
       },
 
       generateDailyCard: () => {

@@ -18,13 +18,24 @@ export default function PlayerSetup({ onStart }: PlayerSetupProps) {
     e.preventDefault();
     if (!name.trim() || !epicWin.trim()) return;
 
+    console.log('開始初始化玩家:', { name: name.trim(), epicWin: epicWin.trim() });
     setIsSubmitting(true);
     
-    // 模擬初始化過程
-    setTimeout(() => {
+    try {
+      // 初始化玩家
+      console.log('調用 initializePlayer...');
       initializePlayer(name.trim(), epicWin.trim());
-      onStart();
-    }, 1500);
+      console.log('initializePlayer 完成');
+      
+      // 短暫延遲後開始遊戲
+      setTimeout(() => {
+        console.log('調用 onStart...');
+        onStart();
+      }, 500);
+    } catch (error) {
+      console.error('初始化失敗:', error);
+      setIsSubmitting(false);
+    }
   };
 
   return (
