@@ -32,15 +32,29 @@ export default function PlayerSetup() {
           <Gamepad2 className="h-12 w-12 text-white" />
         </div>
         
-        <h1 className="text-6xl font-bold text-white mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+        <h1 
+          className="text-6xl font-bold mb-6"
+          style={{
+            background: 'linear-gradient(to right, #60a5fa, #a78bfa)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text'
+          }}
+        >
           人生升級
         </h1>
         
-        <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+        <p 
+          className="text-xl mb-8 max-w-2xl mx-auto leading-relaxed"
+          style={{ color: '#d1d5db' }}
+        >
           將你的日常生活轉化為一場精彩的冒險！設定目標，完成任務，升級人生
         </p>
         
-        <div className="flex items-center justify-center space-x-8 text-sm text-gray-400">
+        <div 
+          className="flex items-center justify-center space-x-8 text-sm"
+          style={{ color: '#9ca3af' }}
+        >
           <div className="flex items-center space-x-2">
             <Target className="h-5 w-5 text-blue-400" />
             <span>智能規劃</span>

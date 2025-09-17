@@ -21,7 +21,13 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+    <div 
+      className="min-h-screen"
+      style={{
+        background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #1e293b 75%, #0f172a 100%)',
+        color: 'white'
+      }}
+    >
       {/* 導航欄 */}
       {player && <Navigation />}
       
