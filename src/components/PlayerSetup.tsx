@@ -25,7 +25,7 @@ export default function PlayerSetup() {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto">
+    <div className="w-full" style={{ maxWidth: '800px', margin: '0 auto' }}>
       {/* 主標題區域 */}
       <div className="text-center mb-16">
         <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-3xl mb-8 shadow-2xl">

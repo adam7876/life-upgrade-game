@@ -64,11 +64,20 @@ export default function Home() {
       {player && <Navigation />}
       
       {/* 主要內容 */}
-      <main className="min-h-screen flex items-center justify-center p-4">
-        <div className="w-full max-w-7xl flex justify-center">
-          <div className="w-full max-w-4xl">
-            {renderCurrentPage()}
-          </div>
+      <main 
+        className="min-h-screen flex items-center justify-center p-4"
+        style={{ minHeight: 'calc(100vh - 64px)' }}
+      >
+        <div 
+          className="w-full"
+          style={{ 
+            maxWidth: '1200px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}
+        >
+          {renderCurrentPage()}
         </div>
       </main>
     </div>
