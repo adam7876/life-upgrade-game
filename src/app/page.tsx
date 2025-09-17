@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect } from 'react';
 import { useAppStore } from '@/store/app-store';
 import PlayerSetup from '@/components/PlayerSetup';
 import TaskInputPage from '@/components/TaskInputPage';
@@ -8,18 +7,10 @@ import ExecutionPage from '@/components/ExecutionPage';
 import Navigation from '@/components/Navigation';
 
 export default function Home() {
-  const { player, currentPage, setCurrentPage, loadTodayCard } = useAppStore();
+  const { player, currentPage } = useAppStore();
 
-  // 載入今日日卡
-  useEffect(() => {
-    loadTodayCard();
-  }, [loadTodayCard]);
-
-  // 根據當前頁面渲染不同組件
   const renderCurrentPage = () => {
     switch (currentPage) {
-      case 'setup':
-        return <PlayerSetup />;
       case 'input':
         return <TaskInputPage />;
       case 'execute':
@@ -30,13 +21,15 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#0f1419', color: 'white' }}>
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
       {/* 導航欄 */}
       {player && <Navigation />}
       
       {/* 主要內容 */}
-      <main className="min-h-screen flex items-center justify-center">
-        {renderCurrentPage()}
+      <main className="min-h-screen flex items-center justify-center p-4">
+        <div className="w-full max-w-7xl">
+          {renderCurrentPage()}
+        </div>
       </main>
     </div>
   );

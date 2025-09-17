@@ -1,46 +1,33 @@
 'use client';
 
 import { useAppStore } from '@/store/app-store';
-import { Calendar, Plus, Play, User } from 'lucide-react';
+import { Calendar, User, Home } from 'lucide-react';
 
 export default function Navigation() {
-  const { player, currentPage, setCurrentPage, getTodayDate } = useAppStore();
-  const today = getTodayDate();
+  const { currentPage, setCurrentPage, player } = useAppStore();
 
   const navItems = [
-    {
-      id: 'input',
-      label: '輸入任務',
-      icon: Plus,
-      description: '規劃明天的任務'
-    },
-    {
-      id: 'execute',
-      label: '執行任務',
-      icon: Play,
-      description: '執行今日任務'
-    }
+    { id: 'input', label: '輸入任務', icon: Calendar },
+    { id: 'execute', label: '執行任務', icon: User },
   ];
 
   return (
-    <nav className="bg-black/90 backdrop-blur-md border-b border-white/20 sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className="bg-black/20 backdrop-blur-xl border-b border-white/10 sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-16">
-          {/* Logo 和標題 */}
-          <div className="flex items-center space-x-4">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                <Calendar className="h-5 w-5 text-white" />
-              </div>
-              <div>
-                <h1 className="text-lg font-bold text-white">人生升級</h1>
-                <p className="text-xs text-gray-300">{today}</p>
-              </div>
+          {/* Logo */}
+          <div className="flex items-center space-x-3">
+            <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
+              <Home className="h-6 w-6 text-white" />
+            </div>
+            <div>
+              <h1 className="text-xl font-bold text-white">人生升級</h1>
+              <p className="text-xs text-gray-400">{player?.name}</p>
             </div>
           </div>
 
-          {/* 導航項目 */}
-          <div className="flex items-center space-x-1">
+          {/* Navigation Items */}
+          <div className="flex items-center space-x-2">
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = currentPage === item.id;
@@ -49,30 +36,17 @@ export default function Navigation() {
                 <button
                   key={item.id}
                   onClick={() => setCurrentPage(item.id as 'input' | 'execute')}
-                  className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-200 ${
+                  className={`flex items-center space-x-2 px-4 py-2 rounded-xl transition-all duration-300 ${
                     isActive
-                      ? 'bg-white/20 text-white shadow-sm'
-                      : 'text-gray-300 hover:bg-white/10 hover:text-white'
+                      ? 'bg-white/20 text-white shadow-lg'
+                      : 'text-gray-300 hover:text-white hover:bg-white/10'
                   }`}
                 >
-                  <Icon className="h-4 w-4" />
+                  <Icon className="h-5 w-5" />
                   <span className="font-medium">{item.label}</span>
                 </button>
               );
             })}
-          </div>
-
-          {/* 用戶信息 */}
-          <div className="flex items-center space-x-3">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center">
-                <User className="h-4 w-4 text-white" />
-              </div>
-              <div className="hidden sm:block">
-                <p className="text-sm font-medium text-white">{player?.name}</p>
-                <p className="text-xs text-gray-300">等級 1</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
