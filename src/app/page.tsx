@@ -9,16 +9,22 @@ import Navigation from '@/components/Navigation';
 
 export default function Home() {
   const { player, currentPage, setCurrentPage } = useAppStore();
+  const [isInitializing, setIsInitializing] = React.useState(false);
 
   // 如果用戶已登入但沒有設定頁面，預設為 input 頁面
   React.useEffect(() => {
     if (player && currentPage === 'setup') {
-      setCurrentPage('input');
+      setIsInitializing(true);
+      // 使用 setTimeout 避免立即跳轉
+      setTimeout(() => {
+        setCurrentPage('input');
+        setIsInitializing(false);
+      }, 100);
     }
   }, [player, currentPage, setCurrentPage]);
 
   // 添加載入狀態檢查
-  if (player && currentPage === 'setup') {
+  if (player && (currentPage === 'setup' || isInitializing)) {
     return (
       <div 
         className="min-h-screen flex items-center justify-center"
