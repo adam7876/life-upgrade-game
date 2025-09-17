@@ -17,6 +17,24 @@ export default function Home() {
     }
   }, [player, currentPage, setCurrentPage]);
 
+  // 添加載入狀態檢查
+  if (player && currentPage === 'setup') {
+    return (
+      <div 
+        className="min-h-screen flex items-center justify-center"
+        style={{
+          background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #1e293b 75%, #0f172a 100%)',
+          color: 'white'
+        }}
+      >
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-400 mx-auto mb-6"></div>
+          <p className="text-gray-300 text-lg">正在載入...</p>
+        </div>
+      </div>
+    );
+  }
+
   const renderCurrentPage = () => {
     switch (currentPage) {
       case 'input':
