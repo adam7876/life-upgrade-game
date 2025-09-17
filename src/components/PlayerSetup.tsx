@@ -74,7 +74,7 @@ export default function PlayerSetup() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="輸入你的名字"
-              className="w-full px-6 py-4 bg-white/20 border border-white/30 rounded-2xl focus:ring-4 focus:ring-blue-400/50 focus:border-transparent transition-all duration-300 text-white placeholder-gray-300 text-lg font-medium backdrop-blur-sm"
+              className="w-full px-6 py-4 bg-transparent border border-white/30 rounded-2xl focus:ring-4 focus:ring-blue-400/50 focus:border-transparent transition-all duration-300 text-white placeholder-gray-300 text-lg font-medium"
               required
             />
           </div>
@@ -89,7 +89,7 @@ export default function PlayerSetup() {
               onChange={(e) => setEpicWin(e.target.value)}
               placeholder="例如：通過 CASI L3 滑雪教練認證；英文教學口語自然流暢（每週 2 次英教實戰）"
               rows={4}
-              className="w-full px-6 py-4 bg-white/20 border border-white/30 rounded-2xl focus:ring-4 focus:ring-blue-400/50 focus:border-transparent transition-all duration-300 resize-none text-white placeholder-gray-300 text-lg backdrop-blur-sm"
+              className="w-full px-6 py-4 bg-transparent border border-white/30 rounded-2xl focus:ring-4 focus:ring-blue-400/50 focus:border-transparent transition-all duration-300 resize-none text-white placeholder-gray-300 text-lg"
               required
             />
             <p className="text-sm text-gray-400">

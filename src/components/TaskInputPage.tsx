@@ -177,7 +177,7 @@ export default function TaskInputPage() {
                     value={newTask.title}
                     onChange={(e) => setNewTask({ ...newTask, title: e.target.value })}
                     placeholder="輸入任務標題"
-                    className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white placeholder-gray-300 focus:ring-4 focus:ring-blue-400/50 focus:border-transparent backdrop-blur-sm"
+                    className="w-full px-4 py-3 bg-transparent border border-white/30 rounded-xl text-white placeholder-gray-300 focus:ring-4 focus:ring-blue-400/50 focus:border-transparent"
                   />
                 </div>
 
@@ -188,7 +188,7 @@ export default function TaskInputPage() {
                     onChange={(e) => setNewTask({ ...newTask, description: e.target.value })}
                     placeholder="輸入任務描述（可選）"
                     rows={3}
-                    className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white placeholder-gray-300 focus:ring-4 focus:ring-blue-400/50 focus:border-transparent resize-none backdrop-blur-sm"
+                    className="w-full px-4 py-3 bg-transparent border border-white/30 rounded-xl text-white placeholder-gray-300 focus:ring-4 focus:ring-blue-400/50 focus:border-transparent resize-none"
                   />
                 </div>
 
@@ -201,7 +201,7 @@ export default function TaskInputPage() {
                     step="5"
                     value={newTask.estimatedTime}
                     onChange={(e) => setNewTask({ ...newTask, estimatedTime: parseInt(e.target.value) || 30 })}
-                    className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white focus:ring-4 focus:ring-blue-400/50 focus:border-transparent backdrop-blur-sm"
+                    className="w-full px-4 py-3 bg-transparent border border-white/30 rounded-xl text-white focus:ring-4 focus:ring-blue-400/50 focus:border-transparent"
                   />
                 </div>
 
