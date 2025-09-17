@@ -30,7 +30,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-[#1a1a2e]">
       {/* 導航欄 */}
       {player && <Navigation />}
       

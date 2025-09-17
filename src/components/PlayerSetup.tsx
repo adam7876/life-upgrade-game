@@ -28,33 +28,35 @@ export default function PlayerSetup() {
     <div className="min-h-screen flex items-center justify-center p-4">
       <div className="max-w-2xl w-full">
         {/* 標題區域 */}
-        <div className="text-center mb-8">
-          <div className="flex items-center justify-center mb-4">
-            <Gamepad2 className="h-16 w-16 text-blue-600 animate-float" />
+        <div className="text-center mb-12">
+          <div className="flex items-center justify-center mb-6">
+            <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center">
+              <Gamepad2 className="h-10 w-10 text-white" />
+            </div>
           </div>
-          <h1 className="text-4xl font-bold text-gray-800 mb-2">
+          <h1 className="text-5xl font-bold text-white mb-4">
             🎮 人生升級線上遊戲
           </h1>
-          <p className="text-xl text-gray-600 mb-6">
+          <p className="text-xl text-gray-300 mb-8">
             將你的日常生活轉化為一場精彩的冒險！
           </p>
-          <div className="flex items-center justify-center space-x-4 text-sm text-gray-500">
+          <div className="flex items-center justify-center space-x-6 text-sm text-gray-300">
             <div className="flex items-center">
-              <Target className="h-4 w-4 mr-1" />
-              智能任務生成
+              <Target className="h-4 w-4 mr-2" />
+              任務規劃
             </div>
             <div className="flex items-center">
-              <Sparkles className="h-4 w-4 mr-1" />
+              <Sparkles className="h-4 w-4 mr-2" />
               遊戲化體驗
             </div>
           </div>
         </div>
 
         {/* 設定表單 */}
-        <div className="game-card">
+        <div className="dbc-card">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
                 你的名字
               </label>
               <input
@@ -63,13 +65,13 @@ export default function PlayerSetup() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="輸入你的名字"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-800 font-medium"
                 required
               />
             </div>
 
             <div>
-              <label htmlFor="epicWin" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="epicWin" className="block text-sm font-semibold text-gray-700 mb-2">
                 你的 Epic Win（終極目標）
               </label>
               <textarea
@@ -78,7 +80,7 @@ export default function PlayerSetup() {
                 onChange={(e) => setEpicWin(e.target.value)}
                 placeholder="例如：通過 CASI L3；英文教學口語自然流暢（每週 2 次英教實戰）"
                 rows={3}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none text-gray-800"
                 required
               />
               <p className="text-sm text-gray-500 mt-1">
@@ -89,7 +91,7 @@ export default function PlayerSetup() {
             <button
               type="submit"
               disabled={!name.trim() || !epicWin.trim() || isSubmitting}
-              className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 px-6 rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex items-center justify-center"
+              className="w-full dbc-button-primary py-4 text-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
             >
               {isSubmitting ? (
                 <>
