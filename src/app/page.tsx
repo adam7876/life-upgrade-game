@@ -30,7 +30,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-[#1a1a2e]">
+    <div className="min-h-screen" style={{ backgroundColor: '#1a1a2e', color: 'white' }}>
       {/* 導航欄 */}
       {player && <Navigation />}
       

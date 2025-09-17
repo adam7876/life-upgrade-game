@@ -25,7 +25,7 @@ export default function PlayerSetup() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4">
+    <div className="min-h-screen flex items-center justify-center p-4" style={{ backgroundColor: '#1a1a2e', color: 'white' }}>
       <div className="max-w-2xl w-full">
         {/* 標題區域 */}
         <div className="text-center mb-12">

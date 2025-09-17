@@ -73,7 +73,7 @@ export default function TaskInputPage() {
   }
 
   return (
-    <div className="min-h-screen p-6">
+    <div className="min-h-screen p-6" style={{ backgroundColor: '#1a1a2e', color: 'white' }}>
       <div className="max-w-6xl mx-auto">
         {/* 頁面標題 */}
         <div className="mb-12">
