@@ -1,37 +1,23 @@
 'use client';
 
 import { useState } from 'react';
-import { useGameStore } from '@/store/game-store';
+import { useAppStore } from '@/store/app-store';
 import { Gamepad2, Target, Sparkles } from 'lucide-react';
 
-interface PlayerSetupProps {
-  onStart: () => void;
-}
-
-export default function PlayerSetup({ onStart }: PlayerSetupProps) {
+export default function PlayerSetup() {
   const [name, setName] = useState('');
   const [epicWin, setEpicWin] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { initializePlayer } = useGameStore();
+  const { initializePlayer } = useAppStore();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim() || !epicWin.trim()) return;
 
-    console.log('開始初始化玩家:', { name: name.trim(), epicWin: epicWin.trim() });
     setIsSubmitting(true);
     
     try {
-      // 初始化玩家
-      console.log('調用 initializePlayer...');
       initializePlayer(name.trim(), epicWin.trim());
-      console.log('initializePlayer 完成');
-      
-      // 短暫延遲後開始遊戲
-      setTimeout(() => {
-        console.log('調用 onStart...');
-        onStart();
-      }, 500);
     } catch (error) {
       console.error('初始化失敗:', error);
       setIsSubmitting(false);

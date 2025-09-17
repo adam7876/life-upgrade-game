@@ -1,9 +1,7 @@
-// 遊戲核心類型定義
+// 重新設計的系統類型定義
 export interface Player {
   id: string;
   name: string;
-  level: number;
-  experience: number;
   currentEpicWin: string;
   mood: number; // 1-5
   location: string;
@@ -12,55 +10,86 @@ export interface Player {
   updatedAt: Date;
 }
 
-export interface Quest {
+export interface Task {
   id: string;
   title: string;
   description: string;
-  type: QuestType;
-  difficulty: Difficulty;
   estimatedTime: number; // 分鐘
-  experience: number;
+  difficulty: Difficulty;
   isCompleted: boolean;
-  isRequired: boolean; // 是否為必做任務
   createdAt: Date;
-  dueDate?: Date;
   tags: string[];
 }
 
-export type QuestType = 
-  | 'main'      // 主線任務
-  | 'side'      // 支線任務
-  | 'random'    // 隨機任務
-  | 'emergency' // 緊急任務
-  | 'coop';     // 合作任務
-
 export type Difficulty = 1 | 2 | 3 | 4 | 5;
+
+// 基於 rule.txt 的日卡結構
+export interface DailyCard {
+  id: string;
+  date: string; // YYYY-MM-DD 格式
+  player: Player;
+  
+  // 1) 主線任務（Epic Win）
+  epicWin: string;
+  
+  // 2) 今日關卡
+  levels: Level[];
+  currentLevelTarget: string; // 本關目標（量化）
+  
+  // 3) 今日任務（最多3項）
+  tasks: Task[];
+  ifThenPlan: string; // If-Then 計劃
+  
+  // 4) 能量道具（Power-Ups）
+  powerUps: PowerUp[];
+  
+  // 5) 盟友（Co-op）
+  allies: Ally[];
+  
+  // 6) 壞蛋（Bad Guys）→ 應對招
+  enemies: Enemy[];
+  
+  // 7) 分心避雷 → 替代行為
+  distractions: Distraction[];
+  
+  // 8) 外掛（Cheat Codes）
+  cheatCodes: CheatCode[];
+  
+  // 9) 計分板（Score）
+  score: Score;
+  
+  // 10) 成就 / 戰利品
+  achievements: string[];
+  
+  // 11) 失敗 → 回饋
+  failures: Failure[];
+  
+  // 12) 明日第一步 & 時段
+  nextStep: string;
+  nextStepTime: string;
+  
+  // 13) 備註（Notes）
+  notes: string[];
+  tags: string[];
+  
+  // 系統字段
+  isLocked: boolean; // 是否已鎖定（隔天無法修改）
+  createdAt: Date;
+  updatedAt: Date;
+}
 
 export interface Level {
   id: string;
   name: string;
-  description: string;
   level: number;
   isCompleted: boolean;
-  target: string; // 量化目標
-  experience: number;
 }
 
 export interface PowerUp {
   id: string;
   name: string;
-  description: string;
-  type: PowerUpType;
   isUsed: boolean;
-  effect: string;
 }
-
-export type PowerUpType = 
-  | 'warmup'     // 動態熱身
-  | 'breathing'  // 呼吸練習
-  | 'focus'      // 專注力
-  | 'energy'     // 能量恢復
-  | 'motivation'; // 動機提升
 
 export interface Ally {
   id: string;
@@ -73,7 +102,6 @@ export interface Ally {
 export interface Enemy {
   id: string;
   name: string;
-  description: string;
   counterStrategy: string;
   isActive: boolean;
 }
@@ -81,26 +109,16 @@ export interface Enemy {
 export interface Distraction {
   id: string;
   name: string;
-  description: string;
-  riskLevel: 'low' | 'medium' | 'high';
   alternativeAction: string;
-  isActive: boolean;
 }
 
 export interface CheatCode {
   id: string;
   name: string;
   description: string;
-  type: CheatCodeType;
+  type: 'responsibility' | 'reality' | 'reduction' | 'sharing';
   isUsed: boolean;
-  effect: string;
 }
-
-export type CheatCodeType = 
-  | 'responsibility' // 承擔責任
-  | 'reality'        // 寫下實況
-  | 'reduction'      // 減少幻想
-  | 'sharing';       // 分享羞愧
 
 export interface Score {
   experience: number;
@@ -114,43 +132,10 @@ export interface Score {
   };
 }
 
-export interface Achievement {
-  id: string;
-  title: string;
-  description: string;
-  icon: string;
-  isUnlocked: boolean;
-  unlockedAt?: Date;
-  category: string;
-}
-
 export interface Failure {
   id: string;
   description: string;
   lesson: string;
   adjustment: string;
   createdAt: Date;
-}
-
-export interface DailyCard {
-  id: string;
-  date: string;
-  player: Player;
-  epicWin: string;
-  levels: Level[];
-  quests: Quest[];
-  powerUps: PowerUp[];
-  allies: Ally[];
-  enemies: Enemy[];
-  distractions: Distraction[];
-  cheatCodes: CheatCode[];
-  score: Score;
-  achievements: Achievement[];
-  failures: Failure[];
-  nextStep: string;
-  nextStepTime: string;
-  notes: string[];
-  tags: string[];
-  createdAt: Date;
-  updatedAt: Date;
 }
