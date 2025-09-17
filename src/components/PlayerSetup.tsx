@@ -25,8 +25,8 @@ export default function PlayerSetup() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4" style={{ backgroundColor: '#1a1a2e', color: 'white' }}>
-      <div className="max-w-2xl w-full">
+    <div className="w-full max-w-4xl mx-auto px-6">
+      <div className="w-full">
         {/* 標題區域 */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center mb-6">
@@ -53,10 +53,10 @@ export default function PlayerSetup() {
         </div>
 
         {/* 設定表單 */}
-        <div className="dbc-card">
+        <div className="bg-white/10 backdrop-blur-md rounded-xl border border-white/20 p-8 shadow-2xl">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
+              <label htmlFor="name" className="block text-sm font-semibold text-white mb-2">
                 你的名字
               </label>
               <input
@@ -65,13 +65,13 @@ export default function PlayerSetup() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="輸入你的名字"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-800 font-medium"
+                className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-200 text-white placeholder-gray-300 font-medium"
                 required
               />
             </div>
 
             <div>
-              <label htmlFor="epicWin" className="block text-sm font-semibold text-gray-700 mb-2">
+              <label htmlFor="epicWin" className="block text-sm font-semibold text-white mb-2">
                 你的 Epic Win（終極目標）
               </label>
               <textarea
@@ -80,10 +80,10 @@ export default function PlayerSetup() {
                 onChange={(e) => setEpicWin(e.target.value)}
                 placeholder="例如：通過 CASI L3；英文教學口語自然流暢（每週 2 次英教實戰）"
                 rows={3}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none text-gray-800"
+                className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-200 resize-none text-white placeholder-gray-300"
                 required
               />
-              <p className="text-sm text-gray-500 mt-1">
+              <p className="text-sm text-gray-300 mt-1">
                 這是你想要在 8-12 週內達成的主要目標
               </p>
             </div>
@@ -91,7 +91,7 @@ export default function PlayerSetup() {
             <button
               type="submit"
               disabled={!name.trim() || !epicWin.trim() || isSubmitting}
-              className="w-full dbc-button-primary py-4 text-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+              className="w-full bg-blue-600 text-white px-6 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-all duration-200 shadow-lg text-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
             >
               {isSubmitting ? (
                 <>
@@ -110,20 +110,20 @@ export default function PlayerSetup() {
 
         {/* 特色說明 */}
         <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="text-center p-4 bg-white rounded-lg shadow-sm">
+          <div className="text-center p-4 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20">
             <div className="text-2xl mb-2">🎯</div>
-            <h3 className="font-medium text-gray-800 mb-1">智能任務生成</h3>
-            <p className="text-sm text-gray-600">系統會根據你的目標自動生成每日任務</p>
+            <h3 className="font-medium text-white mb-1">智能任務生成</h3>
+            <p className="text-sm text-gray-300">系統會根據你的目標自動生成每日任務</p>
           </div>
-          <div className="text-center p-4 bg-white rounded-lg shadow-sm">
+          <div className="text-center p-4 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20">
             <div className="text-2xl mb-2">🏆</div>
-            <h3 className="font-medium text-gray-800 mb-1">遊戲化體驗</h3>
-            <p className="text-sm text-gray-600">經驗值、等級、成就系統讓成長更有趣</p>
+            <h3 className="font-medium text-white mb-1">遊戲化體驗</h3>
+            <p className="text-sm text-gray-300">經驗值、等級、成就系統讓成長更有趣</p>
           </div>
-          <div className="text-center p-4 bg-white rounded-lg shadow-sm">
+          <div className="text-center p-4 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20">
             <div className="text-2xl mb-2">🤝</div>
-            <h3 className="font-medium text-gray-800 mb-1">社交互動</h3>
-            <p className="text-sm text-gray-600">與朋友一起成長，互相支持</p>
+            <h3 className="font-medium text-white mb-1">社交互動</h3>
+            <p className="text-sm text-gray-300">與朋友一起成長，互相支持</p>
           </div>
         </div>
       </div>

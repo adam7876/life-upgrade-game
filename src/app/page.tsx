@@ -30,12 +30,12 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#1a1a2e', color: 'white' }}>
+    <div className="min-h-screen" style={{ backgroundColor: '#0f1419', color: 'white' }}>
       {/* 導航欄 */}
       {player && <Navigation />}
       
       {/* 主要內容 */}
-      <main className="min-h-screen">
+      <main className="min-h-screen flex items-center justify-center">
         {renderCurrentPage()}
       </main>
     </div>
